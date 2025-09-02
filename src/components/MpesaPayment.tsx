@@ -59,7 +59,7 @@ export const MpesaPayment = () => {
           M-Pesa Payment
         </CardTitle>
         <CardDescription>
-          Pay KSH 10 for premium access via M-Pesa
+          Pay KSH 100 for premium access via M-Pesa
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -88,7 +88,7 @@ export const MpesaPayment = () => {
               Processing...
             </>
           ) : (
-            `Pay KSH 10`
+            `Pay KSH 100`
           )}
         </Button>
         
