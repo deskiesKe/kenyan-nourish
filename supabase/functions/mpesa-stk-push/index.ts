@@ -77,7 +77,7 @@ serve(async (req) => {
         Password: password,
         Timestamp: timestamp,
         TransactionType: 'CustomerPayBillOnline',
-        Amount: 10,
+        Amount: 100,
         PartyA: formattedPhone,
         PartyB: shortCode,
         PhoneNumber: formattedPhone,
