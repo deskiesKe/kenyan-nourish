@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, Smartphone } from "lucide-react";
 
 export const MpesaPayment = () => {
+  console.log("MpesaPayment component rendering...");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();

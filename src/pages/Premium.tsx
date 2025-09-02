@@ -1,6 +1,7 @@
 import { MpesaPayment } from "@/components/MpesaPayment";
 
 const Premium = () => {
+  console.log("Premium component rendering...");
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20 p-4">
       <div className="max-w-4xl mx-auto space-y-8 py-8">
