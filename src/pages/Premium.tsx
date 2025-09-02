@@ -1,10 +1,22 @@
 import { MpesaPayment } from "@/components/MpesaPayment";
+import { Button } from "@/components/ui/button";
+import { Home } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Premium = () => {
   console.log("Premium component rendering...");
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20 p-4">
       <div className="max-w-4xl mx-auto space-y-8 py-8">
+        {/* Home Button */}
+        <div className="flex justify-start">
+          <Button asChild variant="outline" className="flex items-center gap-2">
+            <Link to="/">
+              <Home className="h-4 w-4" />
+              Home
+            </Link>
+          </Button>
+        </div>
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Premium Access
