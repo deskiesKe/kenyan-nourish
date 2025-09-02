@@ -12,7 +12,10 @@ serve(async (req) => {
   }
 
   try {
+    console.log('M-Pesa STK Push function called');
+    
     const { phoneNumber } = await req.json();
+    console.log('Phone number received:', phoneNumber);
     
     if (!phoneNumber) {
       throw new Error('Phone number is required');
@@ -22,8 +25,12 @@ serve(async (req) => {
     const consumerKey = Deno.env.get('DARAJA_CONSUMER_KEY');
     const consumerSecret = Deno.env.get('DARAJA_CONSUMER_SECRET');
     
+    console.log('Consumer key exists:', !!consumerKey);
+    console.log('Consumer secret exists:', !!consumerSecret);
+    
     if (!consumerKey || !consumerSecret) {
-      throw new Error('Daraja credentials not configured');
+      console.error('Missing Daraja credentials');
+      throw new Error('Daraja credentials not configured - please check Supabase secrets');
     }
 
     const credentials = btoa(`${consumerKey}:${consumerSecret}`);
