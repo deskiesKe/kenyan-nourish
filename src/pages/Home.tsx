@@ -208,7 +208,7 @@ const Home = () => {
                 Get Started Free
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
+            <Button asChild size="lg" variant="outline" className="border-primary-foreground/20 text-yellow-500 hover:bg-primary-foreground/10">
               <Link to="/premium">
                 <Crown className="w-5 h-5 mr-2" />
                 Upgrade to Premium
