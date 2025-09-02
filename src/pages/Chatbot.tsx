@@ -37,6 +37,14 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
+  const mockResponses: Record<string, string> = {
+    "How do I cook ugali?": "To cook ugali:\n\n1. Boil 2 cups of water with a pinch of salt\n2. Gradually add 1½ cups of maize flour while stirring continuously\n3. Stir vigorously to avoid lumps\n4. Cook for 5-7 minutes until thick and smooth\n5. Shape into a mound and serve hot\n\nUgali is perfect with sukuma wiki, nyama choma, or any stew!",
+    
+    "What are the health benefits of sukuma wiki?": "Sukuma wiki (collard greens) is incredibly nutritious:\n\n• High in Vitamin K for bone health\n• Rich in Vitamin C for immunity\n• Contains folate for cell division\n• Good source of calcium and iron\n• High fiber content aids digestion\n• Low calories, perfect for weight management\n\nIt's one of Kenya's healthiest vegetables - packed with antioxidants!",
+    
+    "Show me a recipe for githeri": "Here's a delicious Githeri recipe:\n\n**Ingredients:**\n• 1 cup boiled maize\n• 1 cup boiled beans\n• 2 onions, chopped\n• 3 tomatoes, diced\n• 2 cloves garlic\n• Oil, salt, and spices\n\n**Steps:**\n1. Sauté onions until golden\n2. Add garlic and tomatoes\n3. Mix in boiled maize and beans\n4. Season with salt and spices\n5. Simmer for 10 minutes\n\nServe hot - it's a complete protein meal!"
+  };
+
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputMessage.trim() || isLoading) return;
@@ -49,51 +57,31 @@ const Chatbot = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputMessage;
     setInputMessage("");
     setIsLoading(true);
 
-    try {
-      const { data, error } = await supabase.functions.invoke('recipe-chatbot', {
-        body: { message: inputMessage }
-      });
-
-      if (error) throw error;
+    // Simulate API delay
+    setTimeout(() => {
+      const response = mockResponses[currentInput] || 
+        "I'd love to help you with that! For now, I can answer these specific questions:\n\n• How do I cook ugali?\n• What are the health benefits of sukuma wiki?\n• Show me a recipe for githeri\n\nPlease try one of these questions, or ask something similar about Kenyan cuisine!";
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: data.response || "I'm sorry, I couldn't process that request. Please try again.",
+        content: response,
         sender: 'bot',
         timestamp: new Date()
       };
 
       setMessages(prev => [...prev, botMessage]);
-    } catch (error) {
-      console.error('Chatbot error:', error);
-      toast({
-        title: "Error",
-        description: "Failed to get response from AI assistant. Please try again.",
-        variant: "destructive",
-      });
-      
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: "I'm sorry, I'm having trouble connecting right now. Please try again in a moment.",
-        sender: 'bot',
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, errorMessage]);
-    } finally {
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   const quickQuestions = [
     "How do I cook ugali?",
     "What are the health benefits of sukuma wiki?",
-    "Show me a recipe for githeri",
-    "How much protein is in nyama choma?",
-    "What spices are used in pilau?",
-    "Is chapati healthy for children?"
+    "Show me a recipe for githeri"
   ];
 
   const handleQuickQuestion = (question: string) => {
@@ -120,15 +108,15 @@ const Chatbot = () => {
 
         {/* Quick Questions */}
         <div className="mb-8">
-          <h2 className="text-lg font-semibold text-foreground mb-4">Quick Questions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <h2 className="text-lg font-semibold text-foreground mb-4">Try These Questions</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
             {quickQuestions.map((question, index) => (
               <Button
                 key={index}
                 variant="outline"
                 size="sm"
                 onClick={() => handleQuickQuestion(question)}
-                className="justify-start h-auto p-3 text-left border-primary/20 hover:bg-primary/5 hover:border-primary/40"
+                className="justify-start h-auto p-4 text-left border-primary/20 hover:bg-primary/5 hover:border-primary/40 font-medium"
               >
                 {question}
               </Button>
