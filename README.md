@@ -1,4 +1,4 @@
-the prompt i used in lovable is as follows:
+**the prompt i used in lovable is as follows:**
 
 Build a full-stack web app called Nutriflavour.
 
@@ -45,39 +45,7 @@ Users can sign up, log in, and see their profile.
 Deliverables:
 
 React frontend with Tailwind styling.
-
-Express backend with routes for recipes, premium recipes, chatbot, and auth.
-
-PostgreSQL schema + sample seed data (10 free recipes, 1–2 per premium category).
-
-Chatbot route integrated with OpenAI API (use environment variable for API key).
-
-Mock M-Pesa subscription flow.
-
-commit this changed at every stage
-
 # Welcome to your Lovable project
-
-## Project info
-
-**URL**: https://lovable.dev/projects/28546b9b-4f8f-4d50-acb2-c3640f684569
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/28546b9b-4f8f-4d50-acb2-c3640f684569) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
 Follow these steps:
 
 ```sh
@@ -123,6 +91,21 @@ This project is built with:
 Simply open [Lovable](https://lovable.dev/projects/28546b9b-4f8f-4d50-acb2-c3640f684569) and click on Share -> Publish.
 
 ## Can I connect a custom domain to my Lovable project?
+Express backend with routes for recipes, premium recipes, chatbot, and auth.
+
+PostgreSQL schema + sample seed data (10 free recipes, 1–2 per premium category).
+
+Chatbot route integrated with OpenAI API (use environment variable for API key).
+
+Mock M-Pesa subscription flow.
+
+commit this changed at every stage
+
+             ** to view how this project works check out the link below **
+
+
+
+
 
 Yes, you can!
 
